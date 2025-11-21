@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Under Maintenance</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body,
+    html {
+      height: 100%;
+      overflow: hidden;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Fullscreen Video Background */
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.45);
+    }
+
+    /* Main container */
+    .wrapper {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      padding: 60px;
+      align-items: center;
+    }
+
+    /* Left Text Section */
+    .left-text {
+      max-width: 50%;
+      color: #fff;
+      animation: slideInLeft 1.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .left-text h1 {
+      font-size: 64px;
+      font-weight: 700;
+      color: #ffd8a9;
+      margin-bottom: 20px;
+      text-shadow: 0 0 12px rgba(255, 217, 168, 0.5);
+    }
+
+    .left-text p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #f0e6d2;
+      opacity: 0.9;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 25px;
+      width: 100%;
+      text-align: center;
+      color: #ffffffb8;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Maintenance Video -->
+  <video autoplay loop muted playsinline class="video-bg">
+    <source src="maintaince.mp4" type="video/mp4" />
+
+  </video>
+
+  <div class="wrapper">
+    <div class="left-text">
+      <h1>We’re Brewing Something New</h1>
+      <p>
+        Our website is currently undergoing maintenance.<br>
+        We will be back with a fresh and improved experience.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 CEYMOS LANKA (PVT) LTD. All Rights Reserved.
+  </footer>
+
+</body>
+
+</html>

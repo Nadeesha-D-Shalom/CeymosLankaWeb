@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 | Page Not Found</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #F9FAFA;
+    font-family: "Poppins", sans-serif;
+    color: #0A3D2E;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Center Container */
+  .container {
+    text-align: center;
+    animation: fadeIn 1.3s ease-out forwards;
+    opacity: 0;
+    padding: 0 20px;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(25px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating Cup Illustration */
+  .cup {
+    width: 140px;
+    animation: float 4s ease-in-out infinite;
+    margin-bottom: 15px;
+  }
+
+  .cup img {
+    width: 100%;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  /* Heading */
+  h1 {
+    font-size: 65px;
+    font-weight: 700;
+    margin: 0;
+    color: #0A3D2E;
+  }
+
+  /* Sub text */
+  p {
+    font-size: 20px;
+    margin-top: 8px;
+    opacity: 0.85;
+  }
+
+  /* Button */
+  a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 32px;
+    background: #0A3D2E;
+    color: #F9FAFA;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 2px solid #0A3D2E;
+    transition: 0.3s ease;
+  }
+
+  a:hover {
+    background: #063024;
+    border-color: #063024;
+    transform: translateY(-2px);
+  }
+
+  /* Floating green soft particles */
+  .leaf {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #3FB28C;
+    border-radius: 50%;
+    opacity: 0.35;
+    animation: drift 9s infinite ease-in-out;
+  }
+
+  .leaf:nth-child(1) { top: 20%; left: 15%; animation-duration: 7s; }
+  .leaf:nth-child(2) { top: 70%; left: 75%; animation-duration: 10s; }
+  .leaf:nth-child(3) { top: 45%; left: 55%; animation-duration: 8s; }
+  .leaf:nth-child(4) { top: 60%; left: 30%; animation-duration: 12s; }
+  .leaf:nth-child(5) { top: 30%; left: 80%; animation-duration: 9s; }
+
+  @keyframes drift {
+    0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    50% { transform: translateY(-40px) translateX(-20px); opacity: 0.55; }
+    100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- Floating green particles -->
+<div class="leaf"></div>
+<div class="leaf"></div>
+<div class="leaf"></div>
+<div class="leaf"></div>
+<div class="leaf"></div>
+
+<!-- Floating tea cup -->
+<div class="cup">
+  <img src="https://cdn-icons-png.flaticon.com/512/924/924514.png" alt="Tea or Coffee Cup">
+</div>
+
+<!-- Text -->
+<div class="container">
+  <h1>404</h1>
+  <p>This page doesn’t seem to exist.</p>
+  <p>Would you like a warm cup of tea instead?</p>
+  <a href="/TeaWeb/">Return Home</a>
+</div>
+
+</body>
+</html>
