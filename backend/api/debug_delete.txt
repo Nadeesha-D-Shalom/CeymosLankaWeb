@@ -1,0 +1,6 @@
+Array
+(
+    [delete_id] => 6
+    [admin_id] => 13
+    [password] => 1qaz
+)
