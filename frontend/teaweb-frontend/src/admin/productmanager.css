@@ -1,0 +1,235 @@
+/* HEADER */
+.pm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.pm-add-btn {
+  background: #0A3D62;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pm-add-btn:hover { background: #062944; }
+
+/* GRID */
+.pm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* PRODUCT CARD */
+.pm-card {
+  background: #ffffffee;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.pm-img {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.pm-name {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pm-sub {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.pm-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pm-edit,
+.pm-delete {
+  border: none;
+  background: #eee;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pm-edit i {
+  color: #0A3D62;
+}
+
+.pm-delete i {
+  color: #c0392b;
+}
+
+/* MODAL OVERLAY */
+.pm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* MAIN MODAL BOX */
+.pm-modal {
+  width: 760px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* DELETE SMALL BOX */
+.pm-modal-small {
+  width: 360px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+}
+
+/* HORIZONTAL FORM LAYOUT */
+.pm-form-horizontal {
+  display: flex;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.pm-left, .pm-right {
+  flex: 1;
+}
+
+/* INPUTS */
+.pm-input,
+.pm-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+}
+
+.pm-textarea {
+  height: 110px;
+}
+
+/* FILE INPUT */
+.pm-file-label {
+  display: block;
+  background: #eee;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pm-file-label input {
+  display: none;
+}
+
+/* PREVIEW IMAGE */
+.pm-preview-horizontal {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-top: 10px;
+  background: #f5f5f5;
+  padding: 10px;
+}
+
+
+/* BUTTONS */
+.pm-save {
+  width: 100%;
+  padding: 12px;
+  background: #0A3D62;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.pm-save:hover { background: #062944; }
+
+.pm-delete-confirm {
+  width: 100%;
+  padding: 12px;
+  background: #c0392b;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.pm-cancel {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: #777;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.pm-cancel:hover { background: #555; }
+
+
+/* PREVIEW IMAGE (inside modal) */
+.pm-preview-horizontal {
+  width: 100%;
+  max-height: 180px;      /* limit height */
+  border-radius: 10px;
+  object-fit: contain;    /* keep full image visible */
+  margin-top: 10px;
+}
+
+/* Optional: allow modal to scroll if content is tall */
+.pm-modal {
+  width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+
+.pm-preview,
+.pm-preview-horizontal {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+}
+
+.pm-modal img {
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
