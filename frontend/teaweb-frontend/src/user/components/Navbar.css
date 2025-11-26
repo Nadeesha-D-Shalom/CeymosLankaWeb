@@ -1,0 +1,71 @@
+/* MAIN NAVBAR */
+.navbar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* INNER CONTAINER */
+.nav-container {
+  width: 92%;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 120px; /* Same height style as Dilmah navbar */
+}
+
+/* LEFT SIDE (logo + title) */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* LOGO BLOCK – behaves like the Dilmah square logo */
+.logo-wrapper {
+  height: 95px;
+  width: 95px;          /* same size shape as Dilmah */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logo {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* BRAND NAME */
+.nav-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #3b2b1e;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 1px;
+}
+
+/* MENU */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 38px;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.nav-menu li a:hover {
+  color: #b68b32; /* elegant gold hover */
+}

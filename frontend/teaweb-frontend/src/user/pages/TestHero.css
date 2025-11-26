@@ -1,0 +1,75 @@
+.tea-hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1545239705-1564e66b9c68?auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tea-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(10, 61, 46, 0.8),
+    rgba(10, 61, 46, 0.4)
+  );
+  z-index: 1;
+}
+
+.tea-content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  color: white;
+  max-width: 600px;
+  margin-left: 10%;
+  animation: fadeSlide 1.4s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeSlide {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.tea-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+  letter-spacing: 2px;
+}
+
+.tea-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  color: #f0f5f4;
+  line-height: 1.6;
+}
+
+.tea-btn {
+  padding: 14px 32px;
+  background-color: #3fb28c;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.tea-btn:hover {
+  background-color: #2f9e76;
+  transform: translateY(-3px);
+}

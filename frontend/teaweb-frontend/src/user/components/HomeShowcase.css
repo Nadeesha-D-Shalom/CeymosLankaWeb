@@ -1,0 +1,137 @@
+/* ==== MAIN WRAPPER ==== */
+.home-showcase-wrapper {
+  width: 100%;
+  padding: 10px 0;
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #f8efde,
+    #f0eded
+  );
+}
+
+/* ==== SECTION ==== */
+.home-showcase {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 80px 0;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* slide + fade when visible */
+.home-showcase.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==== LEFT TEXT ==== */
+.hs-text {
+  width: 50%;
+  padding-right: 40px;
+}
+
+.hs-text h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 46px;
+  color: #3b2b1e;
+  margin-bottom: 12px;
+}
+
+.hs-text h4 {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.hs-text p {
+  color: #444;
+  line-height: 1.7;
+  white-space: pre-line;
+  margin-bottom: 25px;
+}
+
+/* ==== BUTTON ==== */
+.hs-btn {
+  display: inline-block;
+  background: #d4a857;
+  padding: 12px 32px;
+  color: #1d1b16;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.hs-btn:hover {
+  background: #e7be75;
+}
+
+/* ==== RIGHT IMAGE ==== */
+.hs-image {
+  width: 42%;
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.hs-image img {
+  width: 82%;
+  height: auto;
+  object-fit: contain;
+  background: none;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hs-image img:hover {
+  transform: scale(1.03) translateZ(10px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+}
+
+/* ==== DIVIDER ==== */
+.hs-divider {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.18),
+    rgba(0, 0, 0, 0)
+  );
+  margin: 20px auto;
+}
+
+/* ==== REVERSE LAYOUT ==== */
+.home-showcase.reverse {
+  flex-direction: row-reverse;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 900px) {
+  .home-showcase,
+  .home-showcase.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hs-text,
+  .hs-image {
+    width: 100%;
+  }
+
+  .hs-image img {
+    width: 70%;
+    margin-top: 20px;
+  }
+
+  .hs-divider {
+    width: 90%;
+  }
+}
