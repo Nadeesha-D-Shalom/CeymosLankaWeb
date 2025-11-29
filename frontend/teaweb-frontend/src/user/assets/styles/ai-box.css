@@ -1,0 +1,18 @@
+.ai-box {
+  border-left: 4px solid #41ab55;
+  background: rgba(231, 227, 227, 0.158);
+  backdrop-filter: blur(6px);
+  padding: 18px 22px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+  animation: aiPulse 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes aiPulse {
+  from {
+    box-shadow: 0px 4px 14px rgba(70, 80, 211, 0.2);
+  }
+  to {
+    box-shadow: 0px 6px 18px rgba(81, 200, 127, 0.45);
+  }
+}

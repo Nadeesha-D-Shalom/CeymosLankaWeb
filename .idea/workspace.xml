@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39debdc1-9f66-44ef-b856-96b60d159a3f" name="Changes" comment="v 2.0.1">
+    <list default="true" id="39debdc1-9f66-44ef-b856-96b60d159a3f" name="Changes" comment="v 3.0.0&#10;&#10;Update: All Products Page Fixed and Stabilized&#10;&#10;Resolved issue where All Products page displayed no items across all categories.&#10;&#10;Added universal JSON resolver to handle inconsistent backend response structures.&#10;&#10;Rebuilt complete Products.js with stable, production-ready logic.&#10;&#10;Ensured correct mapping of image paths and category folders.&#10;&#10;Verified backend API compatibility with GoDaddy hosting environment.&#10;&#10;System now loads Tea, Coconut, Spices, and Rice products reliably on all pages.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1764145264237</updated>
-      <workItem from="1764155208951" duration="4712000" />
+      <workItem from="1764155208951" duration="7908000" />
     </task>
     <task id="LOCAL-00001" summary="v 2.0.1">
       <option name="closed" value="true" />
@@ -89,7 +89,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764227236273</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="v 3.0.0&#10;&#10;Update: All Products Page Fixed and Stabilized&#10;&#10;Resolved issue where All Products page displayed no items across all categories.&#10;&#10;Added universal JSON resolver to handle inconsistent backend response structures.&#10;&#10;Rebuilt complete Products.js with stable, production-ready logic.&#10;&#10;Ensured correct mapping of image paths and category folders.&#10;&#10;Verified backend API compatibility with GoDaddy hosting environment.&#10;&#10;System now loads Tea, Coconut, Spices, and Rice products reliably on all pages.">
+      <option name="closed" value="true" />
+      <created>1764429186262</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764429186262</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="v 2.0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 2.0.1" />
+    <MESSAGE value="v 3.0.0&#10;&#10;Update: All Products Page Fixed and Stabilized&#10;&#10;Resolved issue where All Products page displayed no items across all categories.&#10;&#10;Added universal JSON resolver to handle inconsistent backend response structures.&#10;&#10;Rebuilt complete Products.js with stable, production-ready logic.&#10;&#10;Ensured correct mapping of image paths and category folders.&#10;&#10;Verified backend API compatibility with GoDaddy hosting environment.&#10;&#10;System now loads Tea, Coconut, Spices, and Rice products reliably on all pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="v 3.0.0&#10;&#10;Update: All Products Page Fixed and Stabilized&#10;&#10;Resolved issue where All Products page displayed no items across all categories.&#10;&#10;Added universal JSON resolver to handle inconsistent backend response structures.&#10;&#10;Rebuilt complete Products.js with stable, production-ready logic.&#10;&#10;Ensured correct mapping of image paths and category folders.&#10;&#10;Verified backend API compatibility with GoDaddy hosting environment.&#10;&#10;System now loads Tea, Coconut, Spices, and Rice products reliably on all pages." />
   </component>
 </project>

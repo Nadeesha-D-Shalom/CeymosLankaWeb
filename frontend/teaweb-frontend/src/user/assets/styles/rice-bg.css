@@ -1,0 +1,17 @@
+.rice-bg {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+.rice-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/rice-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  z-index: -1;
+}

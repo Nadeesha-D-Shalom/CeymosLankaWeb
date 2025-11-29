@@ -1,0 +1,16 @@
+.page-bg {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.page-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/c-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: -1;
+}
