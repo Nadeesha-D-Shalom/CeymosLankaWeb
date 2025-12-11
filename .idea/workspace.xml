@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39debdc1-9f66-44ef-b856-96b60d159a3f" name="Changes" comment="v 3.0.0&#10;&#10;Update: All Products Page Fixed and Stabilized&#10;&#10;Resolved issue where All Products page displayed no items across all categories.&#10;&#10;Added universal JSON resolver to handle inconsistent backend response structures.&#10;&#10;Rebuilt complete Products.js with stable, production-ready logic.&#10;&#10;Ensured correct mapping of image paths and category folders.&#10;&#10;Verified backend API compatibility with GoDaddy hosting environment.&#10;&#10;System now loads Tea, Coconut, Spices, and Rice products reliably on all pages." />
+    <list default="true" id="39debdc1-9f66-44ef-b856-96b60d159a3f" name="Changes" comment="v 3.1.1&#10;&#10;Update: Enhanced About Company Section – Auto Image Slider + In-View Animations&#10;&#10;Implemented a fully animated, production-ready About Company module with improved visual performance and interaction flow.&#10;&#10;Key Improvements:&#10;&#10;• Added dynamic image slider displaying about1, about2, and about3.&#10;• Configured automatic transitions triggered only when the section enters the viewport.&#10;• Ensured all images maintain identical size, scale, and aspect ratio for design consistency.&#10;• Added left-to-right slide animation with smooth opacity blending using Framer Motion.&#10;• Optimized for stable performance across desktop and mobile devices.&#10;• Code rewritten with clean state management and predictable interval control.&#10;• Improved component structure to match enterprise-level UI/UX patterns.&#10;&#10;Bug Fixes:&#10;&#10;• Resolved layout shift issues when images auto-change.&#10;• Eliminated animation jump when re-entering viewport.&#10;• Fixed image container resizing and flickering issues.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,28 +40,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/SLIIT_Bacholer/Z_Projects_Side/_2_Maintaining/Ceymos_Lanka_WEB/TeaWeb",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/SLIIT_Bacholer/Z_Projects_Side/_2_Maintaining/Ceymos_Lanka_WEB/TeaWeb&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
       </set>
     </attachedChunks>
   </component>
@@ -71,6 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1764145264237</updated>
       <workItem from="1764155208951" duration="9360000" />
+      <workItem from="1765437271673" duration="2805000" />
     </task>
     <task id="LOCAL-00001" summary="v 2.0.1">
       <option name="closed" value="true" />
@@ -96,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764429186262</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="v 3.1.1&#10;&#10;Update: Enhanced About Company Section – Auto Image Slider + In-View Animations&#10;&#10;Implemented a fully animated, production-ready About Company module with improved visual performance and interaction flow.&#10;&#10;Key Improvements:&#10;&#10;• Added dynamic image slider displaying about1, about2, and about3.&#10;• Configured automatic transitions triggered only when the section enters the viewport.&#10;• Ensured all images maintain identical size, scale, and aspect ratio for design consistency.&#10;• Added left-to-right slide animation with smooth opacity blending using Framer Motion.&#10;• Optimized for stable performance across desktop and mobile devices.&#10;• Code rewritten with clean state management and predictable interval control.&#10;• Improved component structure to match enterprise-level UI/UX patterns.&#10;&#10;Bug Fixes:&#10;&#10;• Resolved layout shift issues when images auto-change.&#10;• Eliminated animation jump when re-entering viewport.&#10;• Fixed image container resizing and flickering issues.">
+      <option name="closed" value="true" />
+      <created>1765437624133</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765437624133</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="v 2.0.1" />
     <MESSAGE value="v 3.0.0&#10;&#10;Update: All Products Page Fixed and Stabilized&#10;&#10;Resolved issue where All Products page displayed no items across all categories.&#10;&#10;Added universal JSON resolver to handle inconsistent backend response structures.&#10;&#10;Rebuilt complete Products.js with stable, production-ready logic.&#10;&#10;Ensured correct mapping of image paths and category folders.&#10;&#10;Verified backend API compatibility with GoDaddy hosting environment.&#10;&#10;System now loads Tea, Coconut, Spices, and Rice products reliably on all pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="v 3.0.0&#10;&#10;Update: All Products Page Fixed and Stabilized&#10;&#10;Resolved issue where All Products page displayed no items across all categories.&#10;&#10;Added universal JSON resolver to handle inconsistent backend response structures.&#10;&#10;Rebuilt complete Products.js with stable, production-ready logic.&#10;&#10;Ensured correct mapping of image paths and category folders.&#10;&#10;Verified backend API compatibility with GoDaddy hosting environment.&#10;&#10;System now loads Tea, Coconut, Spices, and Rice products reliably on all pages." />
+    <MESSAGE value="v 3.1.1&#10;&#10;Update: Enhanced About Company Section – Auto Image Slider + In-View Animations&#10;&#10;Implemented a fully animated, production-ready About Company module with improved visual performance and interaction flow.&#10;&#10;Key Improvements:&#10;&#10;• Added dynamic image slider displaying about1, about2, and about3.&#10;• Configured automatic transitions triggered only when the section enters the viewport.&#10;• Ensured all images maintain identical size, scale, and aspect ratio for design consistency.&#10;• Added left-to-right slide animation with smooth opacity blending using Framer Motion.&#10;• Optimized for stable performance across desktop and mobile devices.&#10;• Code rewritten with clean state management and predictable interval control.&#10;• Improved component structure to match enterprise-level UI/UX patterns.&#10;&#10;Bug Fixes:&#10;&#10;• Resolved layout shift issues when images auto-change.&#10;• Eliminated animation jump when re-entering viewport.&#10;• Fixed image container resizing and flickering issues." />
+    <option name="LAST_COMMIT_MESSAGE" value="v 3.1.1&#10;&#10;Update: Enhanced About Company Section – Auto Image Slider + In-View Animations&#10;&#10;Implemented a fully animated, production-ready About Company module with improved visual performance and interaction flow.&#10;&#10;Key Improvements:&#10;&#10;• Added dynamic image slider displaying about1, about2, and about3.&#10;• Configured automatic transitions triggered only when the section enters the viewport.&#10;• Ensured all images maintain identical size, scale, and aspect ratio for design consistency.&#10;• Added left-to-right slide animation with smooth opacity blending using Framer Motion.&#10;• Optimized for stable performance across desktop and mobile devices.&#10;• Code rewritten with clean state management and predictable interval control.&#10;• Improved component structure to match enterprise-level UI/UX patterns.&#10;&#10;Bug Fixes:&#10;&#10;• Resolved layout shift issues when images auto-change.&#10;• Eliminated animation jump when re-entering viewport.&#10;• Fixed image container resizing and flickering issues." />
   </component>
 </project>
