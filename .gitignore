@@ -1,0 +1,15 @@
+# uploads & runtime data
+backend/uploads/
+frontend/teaweb-frontend/src/user/assets/videos/
+
+# large assets (optional but recommended)
+frontend/teaweb-frontend/src/user/assets/images/*.png
+
+# env & build
+.env
+frontend/teaweb-frontend/.env
+frontend/teaweb-frontend/build/
+frontend/teaweb-frontend/*.zip
+
+# IDE
+.idea/

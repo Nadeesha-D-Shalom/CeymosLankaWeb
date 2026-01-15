@@ -1,0 +1,29 @@
+.admin-footer {
+  height: 56px;
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-size: 13px;
+  color: #555;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-version {
+  font-weight: 500;
+}
+
+.footer-flag {
+  width: 22px;
+  height: auto;
+  border-radius: 2px;
+}
