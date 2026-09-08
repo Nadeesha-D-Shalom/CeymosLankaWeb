@@ -1,6 +1,7 @@
 // src/admin/Dashboard.js
 import React, { useEffect, useState, useCallback } from "react";
 import AdminLayout from "./layout/AdminLayout";
+import API_BASE from "../api";
 import "./admin.css";
 import TeaLoader from "../components/TeaLoader";
 
@@ -98,9 +99,7 @@ function Dashboard() {
     }
 
     try {
-      const res = await fetch(
-        `http://localhost/TeaWeb/backend/api/get_admin_by_id.php?id=${loggedAdminId}`
-      );
+      const res = await fetch(`${API_BASE}/get_admin_by_id.php?id=${loggedAdminId}`);
       const data = await res.json();
 
       if (data.success) {
@@ -137,8 +136,7 @@ function Dashboard() {
     }
 
     try {
-      const res = await fetch(
-        "http://localhost/TeaWeb/backend/api/update_admin_profile.php",
+      const res = await fetch(`${API_BASE}/update_admin_profile.php`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -183,8 +181,7 @@ function Dashboard() {
     }
 
     try {
-      const res = await fetch(
-        "http://localhost/TeaWeb/backend/api/change_admin_password.php",
+      const res = await fetch(`${API_BASE}/change_admin_password.php`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -230,8 +227,7 @@ function Dashboard() {
     }
 
     try {
-      const res = await fetch(
-        "http://localhost/TeaWeb/backend/api/delete_self_admin.php",
+      const res = await fetch(`${API_BASE}/delete_self_admin.php`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

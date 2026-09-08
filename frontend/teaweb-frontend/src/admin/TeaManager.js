@@ -73,14 +73,20 @@ function TeaManager() {
 
     if (form.image) fd.append("image", form.image);
 
-    await fetch(`${API_BASE}/tea_manager/add_tea_product.php`, {
-      method: "POST",
-      body: fd
-    });
-
-    setShowAddModal(false);
-    resetForm();
-    loadProducts();
+    try {
+      const res = await fetch(`${API_BASE}/tea_manager/add_tea_product.php`, {
+        method: "POST",
+        body: fd
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || 'Add failed');
+      setShowAddModal(false);
+      resetForm();
+      loadProducts();
+    } catch (err) {
+      console.error('Add product error', err);
+      alert('Failed to add product: ' + (err.message || 'Unknown'));
+    }
   };
 
   const openEdit = (p) => {
@@ -95,9 +101,7 @@ function TeaManager() {
     });
 
     if (p.image) {
-      setPreviewImg(
-        `http://localhost/TeaWeb/backend/uploads/tea_products/${p.image}`
-      );
+      setPreviewImg(`${API_BASE.replace('/api','')}/uploads/tea_products/${p.image}`);
     }
 
     setShowEditModal(true);
@@ -115,14 +119,20 @@ function TeaManager() {
 
     if (form.image) fd.append("image", form.image);
 
-    await fetch(`${API_BASE}/tea_manager/update_tea_product.php`, {
-      method: "POST",
-      body: fd
-    });
-
-    setShowEditModal(false);
-    resetForm();
-    loadProducts();
+    try {
+      const res = await fetch(`${API_BASE}/tea_manager/update_tea_product.php`, {
+        method: "POST",
+        body: fd
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || 'Update failed');
+      setShowEditModal(false);
+      resetForm();
+      loadProducts();
+    } catch (err) {
+      console.error('Update error', err);
+      alert('Failed to update product: ' + (err.message || 'Unknown'));
+    }
   };
 
   const deleteProduct = async () => {
@@ -152,7 +162,7 @@ function TeaManager() {
           products.map((p) => (
             <div className="pm-card" key={p.id}>
               <img
-                src={`http://localhost/TeaWeb/backend/uploads/tea_products/${p.image}`}
+                src={`${API_BASE.replace('/api','')}/uploads/tea_products/${p.image}`}
                 className="pm-img"
                 alt={p.title || "Tea product"}
               />

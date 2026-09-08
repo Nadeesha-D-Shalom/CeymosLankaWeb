@@ -4,6 +4,7 @@ header("Access-Control-Allow-Methods: POST");
 header("Content-Type: application/json");
 
 require_once "../../db.php";
+require_once __DIR__ . "/../image_utils.php";
 
 if (!isset($_FILES["images"])) {
     echo json_encode(["success" => false, "message" => "No images uploaded"]);
@@ -36,15 +37,22 @@ for ($i = 0; $i < $count; $i++) {
         continue;
     }
 
-    $newName = uniqid("gallery_", true) . "." . $ext;
-    $targetPath = $uploadDir . $newName;
-
-    if (!move_uploaded_file($files["tmp_name"][$i], $targetPath)) {
+    $tempName = $uploadDir . uniqid('g_', true) . '.' . $ext;
+    if (!move_uploaded_file($files["tmp_name"][$i], $tempName)) {
         $errors[] = $originalName . " failed to move.";
         continue;
     }
 
-    $dbPath = "uploads/gallery/" . $newName;
+    $webpName = make_unique_webp_name('gallery_', $uploadDir, $originalName);
+    $webpPath = $uploadDir . $webpName;
+    $converted = convert_image_to_webp($tempName, $webpPath, 80);
+    if ($converted) {
+        @unlink($tempName);
+        $dbPath = "uploads/gallery/" . $webpName;
+    } else {
+        // fallback to original file name
+        $dbPath = "uploads/gallery/" . basename($tempName);
+    }
 
     $stmt = $conn->prepare(
         "INSERT INTO gallery_images (image_path, original_name) VALUES (?, ?)"

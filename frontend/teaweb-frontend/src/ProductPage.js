@@ -20,7 +20,7 @@ function ProductPage() {
 
       {product.image && (
         <img
-          src={`http://localhost/TeaWeb/backend/uploads/${product.image}`}
+          src={`${API_BASE.replace('/api','')}/uploads/${product.image}`}
           alt={product.name}
           style={{ width: "300px", borderRadius: "10px" }}
         />

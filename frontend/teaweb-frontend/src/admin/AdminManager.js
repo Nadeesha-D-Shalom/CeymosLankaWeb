@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminLayout from "./layout/AdminLayout";
+import API_BASE from "../api";
 import "./admin.css";
 import TeaLoader from "../components/TeaLoader";
 
@@ -53,7 +54,7 @@ function AdminManager() {
 
   const loadAdmins = async () => {
     try {
-      const res = await fetch("http://localhost/TeaWeb/backend/api/get_admins.php");
+      const res = await fetch(`${API_BASE}/get_admins.php`);
       const data = await res.json();
       setAdmins(data);
     } catch (err) {
@@ -100,7 +101,7 @@ function AdminManager() {
     if (!validateDob(form.dob)) return;
 
     try {
-      const res = await fetch("http://localhost/TeaWeb/backend/api/add_admin.php", {
+      const res = await fetch(`${API_BASE}/add_admin.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
@@ -135,7 +136,7 @@ function AdminManager() {
     if (!validateDob(editForm.dob)) return;
 
     try {
-      const res = await fetch("http://localhost/TeaWeb/backend/api/update_admin.php", {
+      const res = await fetch(`${API_BASE}/update_admin.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editForm)
@@ -171,7 +172,7 @@ function AdminManager() {
     const loggedAdminId = localStorage.getItem("admin_id");
 
     try {
-      const res = await fetch("http://localhost/TeaWeb/backend/api/delete_admin.php", {
+      const res = await fetch(`${API_BASE}/delete_admin.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

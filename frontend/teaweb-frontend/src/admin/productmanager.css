@@ -30,8 +30,14 @@
   background: #ffffffee;
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   text-align: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.pm-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
 .pm-img {
@@ -63,10 +69,16 @@
 .pm-edit,
 .pm-delete {
   border: none;
-  background: #eee;
-  padding: 8px 12px;
-  border-radius: 6px;
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
   cursor: pointer;
+  border: 1px solid #eee;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pm-edit i {
@@ -91,11 +103,21 @@
 /* MAIN MODAL BOX */
 .pm-modal {
   width: 760px;
-  background: #fff;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  background: linear-gradient(180deg,#ffffff,#fbfbfd);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(6,41,68,0.08);
+  border: 1px solid rgba(10,61,98,0.04);
 }
+
+.pm-modal .pm-modal-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.pm-modal .pm-modal-header h2{margin:0;font-size:18px}
+.pm-modal .pm-modal-close{background:transparent;border:none;font-size:18px;cursor:pointer;color:#666}
 
 /* DELETE SMALL BOX */
 .pm-modal-small {
@@ -132,14 +154,17 @@
 
 /* FILE INPUT */
 .pm-file-label {
-  display: block;
-  background: #eee;
-  padding: 10px;
-  border-radius: 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: #f6f8fa;
+  padding: 12px;
+  border-radius: 10px;
   cursor: pointer;
   margin-bottom: 12px;
   text-align: center;
   font-weight: 600;
+  border: 1px dashed #e2e8f0;
 }
 
 .pm-file-label input {
@@ -228,8 +253,24 @@
     margin: 10px auto;
 }
 
+.pm-preview,
+.pm-preview-horizontal { box-shadow: 0 6px 18px rgba(10,61,98,0.06); }
+
 .pm-modal img {
     max-width: 100%;
     max-height: 250px;
     object-fit: cover;
 }
+
+/* Loader */
+.loader {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #e6eef6;
+  border-top: 4px solid #0A3D62;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 30px auto;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserLayout from "../layout/UserLayout";
+import API_BASE from "../../api";
 import AITyping from "../components/AITyping";
 import "../assets/styles/ai-box.css";
 
@@ -30,10 +31,10 @@ export default function MoodRecommendPage() {
     setAiDone(false);
 
     Promise.all([
-      fetch("https://ceymoslanka.com/backend/api/tea_manager/get_tea_products.php").then((r) => r.json()),
-      fetch("https://ceymoslanka.com/backend/api/coconut_manager/get_coconut_products.php").then((r) => r.json()),
-      fetch("https://ceymoslanka.com/backend/api/spices_manager/get_spices_products.php").then((r) => r.json()),
-      fetch("https://ceymoslanka.com/backend/api/rice_manager/get_rice_products.php").then((r) => r.json())
+      fetch(`${API_BASE}/tea_manager/get_tea_products.php`).then((r) => r.json()),
+      fetch(`${API_BASE}/coconut_manager/get_coconut_products.php`).then((r) => r.json()),
+      fetch(`${API_BASE}/spices_manager/get_spices_products.php`).then((r) => r.json()),
+      fetch(`${API_BASE}/rice_manager/get_rice_products.php`).then((r) => r.json())
     ])
       .then(([t, c, s, r]) => {
         setTea(pickRandom(t, 3));
@@ -93,7 +94,7 @@ export default function MoodRecommendPage() {
               className="border rounded-lg shadow-sm hover:shadow-md transition bg-white block"
             >
               <img
-                src={`https://ceymoslanka.com/backend/uploads/${category}_products/${item.image}`}
+                src={`${API_BASE.replace('/api','')}/uploads/${category}_products/${item.image}`}
                 alt={item.title}
                 className="w-full h-40 object-cover rounded-t-lg"
               />

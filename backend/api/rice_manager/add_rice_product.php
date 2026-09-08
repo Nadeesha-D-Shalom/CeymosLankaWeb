@@ -3,6 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 require_once __DIR__ . "/../../db.php";
+require_once __DIR__ . "/../image_utils.php";
 
 $title       = trim($_POST['title'] ?? "");
 $description = trim($_POST['description'] ?? "");
@@ -19,13 +20,19 @@ if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 $imageName = null;
 
 if (!empty($_FILES['image']['name'])) {
-    $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-    $imageName = time() . "_" . uniqid() . "." . $ext;
+    $origExt = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+    $tempPath = $uploadDir . uniqid('rice_tmp_', true) . '.' . $origExt;
 
-    if (!move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $imageName)) {
+    if (!move_uploaded_file($_FILES['image']['tmp_name'], $tempPath)) {
         echo json_encode(["success" => false, "message" => "Image upload failed"]);
         exit;
     }
+
+    $imageName = make_unique_webp_name('rice_', $uploadDir, $_FILES['image']['name']);
+    $webpPath = $uploadDir . $imageName;
+    $converted = convert_image_to_webp($tempPath, $webpPath, 80);
+    if ($converted) @unlink($tempPath);
+    else $imageName = basename($tempPath);
 }
 
 $stmt = $conn->prepare("

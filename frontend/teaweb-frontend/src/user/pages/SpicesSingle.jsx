@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserLayout from "../layout/UserLayout";
+import API_BASE from "../../api";
 import "../assets/styles/spices-bg.css";
 
 const SpicesSingle = () => {
@@ -9,9 +10,7 @@ const SpicesSingle = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      `https://ceymoslanka.com/backend/api/spices_manager/get_single_spice.php?id=${id}`
-    )
+    fetch(`${API_BASE}/spices_manager/get_single_spice.php?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setProduct(data.product);
@@ -51,7 +50,7 @@ const SpicesSingle = () => {
 
             <div>
               <img
-                src={`https://ceymoslanka.com/backend/uploads/spices_products/${product.image}`}
+                src={`${API_BASE.replace('/api','')}/uploads/spices_products/${product.image}`}
                 alt={product.title}
                 className="w-full h-[400px] object-cover rounded-lg shadow-md"
               />

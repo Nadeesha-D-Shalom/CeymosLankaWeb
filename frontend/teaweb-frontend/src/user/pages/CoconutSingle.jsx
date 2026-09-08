@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserLayout from "../layout/UserLayout";
+import API_BASE from "../../api";
 import "../assets/styles/page-bg.css";
 
 const CoconutSingle = () => {
@@ -9,7 +10,7 @@ const CoconutSingle = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://ceymoslanka.com/backend/api/coconut_manager/get_single_coconut.php?id=${id}`)
+    fetch(`${API_BASE}/coconut_manager/get_single_coconut.php?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.error) {
@@ -48,7 +49,7 @@ const CoconutSingle = () => {
           {/* LEFT IMAGE */}
           <div>
             <img
-              src={`https://ceymoslanka.com/backend/uploads/coconut_products/${product.image}`}
+              src={`${API_BASE.replace('/api','')}/uploads/coconut_products/${product.image}`}
               alt={product.title}
               className="w-full h-[400px] object-cover rounded-lg shadow-md"
             />

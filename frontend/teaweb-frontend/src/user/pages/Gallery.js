@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import UserLayout from "../layout/UserLayout";
-
-const API = "https://ceymoslanka.com/backend/api/GalleryManager";
-const BASE = "https://ceymoslanka.com/backend/";
+import API_BASE from "../../api";
+const API = `${API_BASE}/GalleryManager`;
+const BASE = API_BASE.replace('/api','') + '/';
 
 
 export default function Gallery() {

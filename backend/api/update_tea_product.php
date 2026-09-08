@@ -5,6 +5,7 @@ header("Access-Control-Allow-Methods: POST");
 header("Content-Type: application/json");
 
 include("../db.php");
+require_once __DIR__ . "/image_utils.php";
 
 function field($name) {
     return isset($_POST[$name]) ? trim($_POST[$name]) : "";
@@ -53,18 +54,24 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
         exit;
     }
 
-    $newName = "tea_" . time() . "_" . mt_rand(1000, 9999) . "." . $ext;
-    $target  = $uploadDir . $newName;
+    $tempPath = $uploadDir . uniqid('tea_tmp_', true) . '.' . $ext;
+    if (!move_uploaded_file($tmpName, $tempPath)) {
+        echo json_encode(["success" => false, "message" => "Image upload failed"]);
+        exit;
+    }
 
-    if (move_uploaded_file($tmpName, $target)) {
-        // Optionally delete old image
+    $webpName = make_unique_webp_name('tea_', $uploadDir, $origName);
+    $webpPath = $uploadDir . $webpName;
+    $converted = convert_image_to_webp($tempPath, $webpPath, 80);
+    if ($converted) {
         if ($currentImage && file_exists($uploadDir . $currentImage)) {
             @unlink($uploadDir . $currentImage);
         }
-        $imageFileName = $newName;
+        @unlink($tempPath);
+        $imageFileName = $webpName;
     } else {
-        echo json_encode(["success" => false, "message" => "Image upload failed"]);
-        exit;
+        // fallback to keeping temp/original
+        $imageFileName = basename($tempPath);
     }
 }
 

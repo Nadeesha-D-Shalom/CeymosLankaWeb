@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserLayout from "../layout/UserLayout";
+import API_BASE from "../../api";
 
 const Products = () => {
   const [tea, setTea] = useState([]);
@@ -8,7 +9,9 @@ const Products = () => {
   const [rice, setRice] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API = "https://ceymoslanka.com/backend/api";
+  const API = (process && process.env && process.env.REACT_APP_API_BASE)
+    ? process.env.REACT_APP_API_BASE
+    : `${window.location.origin}/TeaWeb/backend/api`;
 
   // Accept both array or object format
   const resolveData = (data) => {
@@ -94,7 +97,7 @@ const Products = () => {
                     <img
                       src={
                         p.image
-                          ? `https://ceymoslanka.com/backend/uploads/${section.folder}/${p.image}`
+                          ? `${API_BASE.replace('/api','')}/uploads/${section.folder}/${p.image}`
                           : "https://via.placeholder.com/300x200?text=No+Image"
                       }
                       alt={p.title}

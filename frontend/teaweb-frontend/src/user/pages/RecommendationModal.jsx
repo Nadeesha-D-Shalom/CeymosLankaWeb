@@ -1,4 +1,5 @@
 import React from "react";
+import API_BASE from "../../api";
 
 const RecommendationModal = ({ open, onClose, products }) => {
   if (!open) return null;
@@ -30,7 +31,7 @@ const RecommendationModal = ({ open, onClose, products }) => {
                   className="border rounded-md shadow-sm hover:shadow-md transition block bg-white"
                 >
                   <img
-                    src={`https://ceymoslanka.com/backend/uploads/${category}_products/${item.image}`}
+                    src={`${API_BASE.replace('/api','')}/uploads/${category}_products/${item.image}`}
                     alt={item.title}
                     className="w-full h-36 object-cover rounded-t-md"
                   />

@@ -130,7 +130,7 @@ function ProductList() {
     setEditImageFile(null);
     setEditImagePreview(
       p.image
-        ? `http://localhost/TeaWeb/backend/uploads/${p.image}`
+        ? `${API_BASE.replace('/api','')}/uploads/${p.image}`
         : null
     );
     setShowEditModal(true);
@@ -226,7 +226,7 @@ function ProductList() {
     } else {
       setEditImagePreview(
         editForm.image
-          ? `http://localhost/TeaWeb/backend/uploads/${editForm.image}`
+          ? `${API_BASE.replace('/api','')}/uploads/${editForm.image}`
           : null
       );
     }
@@ -275,9 +275,9 @@ function ProductList() {
         {filteredProducts.map((p) => (
           <div className="tea-card" key={p.id}>
             <div className="tea-card-image-wrap">
-              {p.image ? (
+                {p.image ? (
                 <img
-                  src={`http://localhost/TeaWeb/backend/uploads/${p.image}`}
+                  src={`${API_BASE.replace('/api','')}/uploads/${p.image}`}
                   alt={p.title}
                   className="tea-card-image"
                 />

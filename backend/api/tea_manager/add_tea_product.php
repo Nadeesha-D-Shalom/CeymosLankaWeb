@@ -5,6 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 require_once __DIR__ . "/../../db.php";
+require_once __DIR__ . "/../image_utils.php";
 
 // Basic validation
 $title         = isset($_POST['title']) ? trim($_POST['title']) : "";
@@ -30,16 +31,25 @@ if (!is_dir($uploadDir)) {
 }
 
 if (!empty($_FILES['image']['name'])) {
-    $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-    $imageName = time() . "_" . uniqid() . "." . $ext;
-    $targetPath = $uploadDir . $imageName;
+    $origExt = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+    $tempPath = $uploadDir . uniqid('tea_tmp_', true) . '.' . $origExt;
 
-    if (!move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+    if (!move_uploaded_file($_FILES['image']['tmp_name'], $tempPath)) {
         echo json_encode([
             "success" => false,
             "message" => "Failed to upload image"
         ]);
         exit;
+    }
+
+    $imageName = make_unique_webp_name('tea_', $uploadDir, $_FILES['image']['name']);
+    $webpPath = $uploadDir . $imageName;
+    $converted = convert_image_to_webp($tempPath, $webpPath, 80);
+    if ($converted) {
+        @unlink($tempPath);
+    } else {
+        // fallback: keep original file
+        $imageName = basename($tempPath);
     }
 }
 

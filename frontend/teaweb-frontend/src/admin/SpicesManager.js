@@ -20,6 +20,7 @@ function SpicesManager() {
     net_weight: "",
     image: null
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const loadProducts = async () => {
     try {
@@ -58,20 +59,28 @@ function SpicesManager() {
 
   const addProduct = async () => {
     const fd = new FormData();
-
     fd.append("title", form.title);
     fd.append("description", form.description);
     fd.append("net_weight", form.net_weight);
     if (form.image) fd.append("image", form.image);
 
-    await fetch(`${API_BASE}/spices_manager/add_spices_product.php`, {
-      method: "POST",
-      body: fd
-    });
-
-    setShowAddModal(false);
-    resetForm();
-    loadProducts();
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(`${API_BASE}/spices_manager/add_spices_product.php`, {
+        method: "POST",
+        body: fd
+      });
+      const data = await res.json();
+      if (data && data.success === false) throw new Error(data.message || 'Add failed');
+      setShowAddModal(false);
+      resetForm();
+      loadProducts();
+    } catch (err) {
+      console.error('Add spice error', err);
+      alert('Failed to add spice: ' + (err.message || 'Unknown'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const openEdit = (p) => {
@@ -84,7 +93,7 @@ function SpicesManager() {
     });
 
     if (p.image) {
-      setPreviewImg(`http://localhost/TeaWeb/backend/uploads/spices_products/${p.image}`);
+      setPreviewImg(`${API_BASE.replace('/api','')}/uploads/spices_products/${p.image}`);
     }
 
     setShowEditModal(true);
@@ -92,21 +101,29 @@ function SpicesManager() {
 
   const updateProduct = async () => {
     const fd = new FormData();
-
     fd.append("id", selectedProduct.id);
     fd.append("title", form.title);
     fd.append("description", form.description);
     fd.append("net_weight", form.net_weight);
     if (form.image) fd.append("image", form.image);
 
-    await fetch(`${API_BASE}/spices_manager/update_spices_product.php`, {
-      method: "POST",
-      body: fd
-    });
-
-    setShowEditModal(false);
-    resetForm();
-    loadProducts();
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(`${API_BASE}/spices_manager/update_spices_product.php`, {
+        method: "POST",
+        body: fd
+      });
+      const data = await res.json();
+      if (data && data.success === false) throw new Error(data.message || 'Update failed');
+      setShowEditModal(false);
+      resetForm();
+      loadProducts();
+    } catch (err) {
+      console.error('Update spice error', err);
+      alert('Failed to update spice: ' + (err.message || 'Unknown'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const deleteProduct = async () => {
@@ -137,7 +154,7 @@ function SpicesManager() {
           products.map((p) => (
             <div className="pm-card" key={p.id}>
               <img
-                src={`http://localhost/TeaWeb/backend/uploads/spices_products/${p.image}`}
+                src={`${API_BASE.replace("/api", "")}/uploads/spices_products/${p.image}`}
                 className="pm-img"
                 alt={p.title}
               />
@@ -169,40 +186,34 @@ function SpicesManager() {
       {showAddModal && (
         <div className="pm-modal-overlay">
           <div className="pm-modal">
-            <h2>Add Spice Product</h2>
+            <div className="pm-modal-header">
+              <h2>Add Spice Product</h2>
+              <button className="pm-modal-close" onClick={() => setShowAddModal(false)}>&times;</button>
+            </div>
 
-            <input
-              name="title"
-              value={form.title}
-              onChange={handleFormChange}
-              className="pm-input"
-              placeholder="Title"
-            />
+            <div className="pm-form-horizontal">
+              <div className="pm-left">
+                <input name="title" value={form.title} onChange={handleFormChange} className="pm-input" placeholder="Title" />
+                <textarea name="description" value={form.description} onChange={handleFormChange} className="pm-textarea" placeholder="Description" />
+                <input name="net_weight" value={form.net_weight} onChange={handleFormChange} className="pm-input" placeholder="Net Weight" />
+              </div>
 
-            <textarea
-              name="description"
-              value={form.description}
-              onChange={handleFormChange}
-              className="pm-textarea"
-              placeholder="Description"
-            />
+              <div className="pm-right">
+                <label className="pm-file-label">
+                  <i className="fas fa-image"></i>
+                  <span style={{marginLeft:8}}>Upload Image</span>
+                  <input type="file" onChange={handleImage} />
+                </label>
 
-            <input
-              name="net_weight"
-              value={form.net_weight}
-              onChange={handleFormChange}
-              className="pm-input"
-              placeholder="Net Weight"
-            />
+                {previewImg ? (
+                  <img src={previewImg} className="pm-preview" alt="preview" />
+                ) : (
+                  <div style={{color:'#778ca3', textAlign:'center', paddingTop:20}}>No image selected</div>
+                )}
+              </div>
+            </div>
 
-            <label className="pm-file-label">
-              <i className="fas fa-image"></i> Upload Image
-              <input type="file" onChange={handleImage} />
-            </label>
-
-            {previewImg && <img src={previewImg} className="pm-preview" alt="preview" />}
-
-            <button className="pm-save" onClick={addProduct}>Save</button>
+            <button className="pm-save" onClick={addProduct} disabled={isSubmitting}>{isSubmitting ? 'Saving...' : 'Save'}</button>
             <button className="pm-cancel" onClick={() => setShowAddModal(false)}>Cancel</button>
           </div>
         </div>
@@ -212,37 +223,34 @@ function SpicesManager() {
       {showEditModal && (
         <div className="pm-modal-overlay">
           <div className="pm-modal">
-            <h2>Edit Spice Product</h2>
+            <div className="pm-modal-header">
+              <h2>Edit Spice Product</h2>
+              <button className="pm-modal-close" onClick={() => setShowEditModal(false)}>&times;</button>
+            </div>
 
-            <input
-              name="title"
-              value={form.title}
-              onChange={handleFormChange}
-              className="pm-input"
-            />
+            <div className="pm-form-horizontal">
+              <div className="pm-left">
+                <input name="title" value={form.title} onChange={handleFormChange} className="pm-input" />
+                <textarea name="description" value={form.description} onChange={handleFormChange} className="pm-textarea" />
+                <input name="net_weight" value={form.net_weight} onChange={handleFormChange} className="pm-input" />
+              </div>
 
-            <textarea
-              name="description"
-              value={form.description}
-              onChange={handleFormChange}
-              className="pm-textarea"
-            />
+              <div className="pm-right">
+                <label className="pm-file-label">
+                  <i className="fas fa-image"></i>
+                  <span style={{marginLeft:8}}>Change Image</span>
+                  <input type="file" onChange={handleImage} />
+                </label>
 
-            <input
-              name="net_weight"
-              value={form.net_weight}
-              onChange={handleFormChange}
-              className="pm-input"
-            />
+                {previewImg ? (
+                  <img src={previewImg} className="pm-preview" alt="preview" />
+                ) : (
+                  <div style={{color:'#778ca3', textAlign:'center', paddingTop:20}}>No image selected</div>
+                )}
+              </div>
+            </div>
 
-            <label className="pm-file-label">
-              <i className="fas fa-image"></i> Change Image
-              <input type="file" onChange={handleImage} />
-            </label>
-
-            {previewImg && <img src={previewImg} className="pm-preview" alt="preview" />}
-
-            <button className="pm-save" onClick={updateProduct}>Update</button>
+            <button className="pm-save" onClick={updateProduct} disabled={isSubmitting}>{isSubmitting ? 'Updating...' : 'Update'}</button>
             <button className="pm-cancel" onClick={() => setShowEditModal(false)}>Cancel</button>
           </div>
         </div>

@@ -9,4 +9,4 @@ $conn = new mysqli($host, $user, $password, $dbname);
 if ($conn->connect_error) {
     die(json_encode(["error" => "Database connection failed"]));
 }
-?>
+// no closing PHP tag to avoid accidental output

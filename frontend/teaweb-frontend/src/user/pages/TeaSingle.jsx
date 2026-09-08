@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserLayout from "../layout/UserLayout";
+import API_BASE from "../../api";
 import "../assets/styles/tea-bg.css";
 
 const TeaSingle = () => {
@@ -9,7 +10,7 @@ const TeaSingle = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://ceymoslanka.com/backend/api/tea_manager/get_single_tea.php?id=${id}`)
+    fetch(`${API_BASE}/tea_manager/get_single_tea.php?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setProduct(data.product);
@@ -49,7 +50,7 @@ const TeaSingle = () => {
 
             <div>
               <img
-                src={`https://ceymoslanka.com/backend/uploads/tea_products/${product.image}`}
+                src={`${API_BASE.replace('/api','')}/uploads/tea_products/${product.image}`}
                 alt={product.title}
                 className="w-full h-[400px] object-cover rounded-lg shadow-md"
               />

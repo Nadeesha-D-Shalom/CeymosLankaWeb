@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserLayout from "../layout/UserLayout";
+import API_BASE from "../../api";
 import "../assets/styles/rice-bg.css";
 
 const RiceSingle = () => {
@@ -9,7 +10,7 @@ const RiceSingle = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://ceymoslanka.com/backend/api/rice_manager/get_single_rice.php?id=${id}`)
+    fetch(`${API_BASE}/rice_manager/get_single_rice.php?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setProduct(data.product);
@@ -46,7 +47,7 @@ const RiceSingle = () => {
 
             <div>
               <img
-                src={`https://ceymoslanka.com/backend/uploads/rice_products/${product.image}`}
+                src={`${API_BASE.replace('/api','')}/uploads/rice_products/${product.image}`}
                 alt={product.title}
                 className="w-full h-[400px] object-cover rounded-lg shadow-md"
               />

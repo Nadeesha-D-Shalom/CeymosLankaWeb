@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import AdminLayout from "./layout/AdminLayout";
 import "./admin.css";
-
-const API = "https://ceymoslanka.com/backend/api/GalleryManager";
-const BASE = "https://ceymoslanka.com/backend/";
+import API_BASE from "../api";
+const API = `${API_BASE}/GalleryManager`;
+const BASE = API_BASE.replace('/api','') + '/';
 
 function GalleryManager() {
   const [items, setItems] = useState([]);
